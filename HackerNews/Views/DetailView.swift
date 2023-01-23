@@ -23,22 +23,3 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(url: "https://www.google.com")
     }
 }
-
-struct WebView: UIViewRepresentable {
-
-    let urlString: String?
-    
-    func makeUIView(context: Context) -> some UIView {
-        return WKWebView()
-    }
-    
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        let view = uiView as? WKWebView
-        if let safeString = urlString {
-            if let url = URL(string: safeString) {
-                let request = URLRequest(url: url)
-                view?.load(request)
-            }
-        }
-    }
-}
